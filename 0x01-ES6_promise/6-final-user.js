@@ -1,10 +1,10 @@
 import signUpUser from './4-user-promise';
 import uploadPhoto from './5-photo-reject';
 
-export default function handleProfileSignup(
+export default async function handleProfileSignup(
   firstName,
   lastName,
-  fileName
+  fileName,
 ) {
   const data = await Promise.allSettled([
     signUpUser(firstName, lastName),
@@ -16,7 +16,7 @@ export default function handleProfileSignup(
   for (const elt of data) {
     ret.push({
       status: elt.status,
-      value:  elt.value || `Error: ${elt.reason.message}`,
+      value: elt.value || `Error: ${elt.reason.message}`,
     });
   }
 
