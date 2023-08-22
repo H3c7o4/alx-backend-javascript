@@ -9,11 +9,11 @@ const app = http.createServer(async (request, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   if (request.url === '/' && request.method === 'GET') {
-    res.write('Hello Holberton School!');
+    res.end('Hello Holberton School!');
   } else if (request.url === '/students' && request.method === 'GET') {
     res.write('This is the list of our students\n');
     try {
-      const students = await countStudents('database.csv');
+      const students = await countStudents(process.argv[2].toString());
       res.end(`${students.join('\n')}`);
     } catch (error) {
       res.end(error.message);
