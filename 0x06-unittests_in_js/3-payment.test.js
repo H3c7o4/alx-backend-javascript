@@ -6,8 +6,9 @@ const expect = chai.expect;
 
 describe("sendPaymentRequestToApi", function () {
   it("should verify utils.calculateNumber is called once", function () {
-    sinon.spy(Utils, 'calculateNumber');
+    const spy = sinon.spy(Utils, 'calculateNumber');
     sendPaymentRequestToApi(100, 20);
     expect(Utils.calculateNumber.calledOnce).to.be.true;
+    spy.restore();
   });
 });
