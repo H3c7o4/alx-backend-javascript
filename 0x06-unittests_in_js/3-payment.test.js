@@ -8,7 +8,7 @@ describe("sendPaymentRequestToApi", function () {
   it("should verify utils.calculateNumber is called once", function () {
     const spy = sinon.spy(Utils, 'calculateNumber');
     sendPaymentRequestToApi(100, 20);
-    expect(Utils.calculateNumber.calledOnce).to.be.true;
+    expect(Utils.calculateNumber.withArgs('SUM', 100, 20).calledOnce).to.be.true;
     spy.restore();
   });
 });
