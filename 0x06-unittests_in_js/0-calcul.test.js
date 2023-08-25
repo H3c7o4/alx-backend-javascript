@@ -11,6 +11,10 @@ describe('#CalculateNumber', function () {
   });
 
   it('should return the sum of rounded values of two numbers', function () {
+    assert.strictEqual(calculateNumber(1.7, 3), 5);
+  });
+
+  it('should return the sum of rounded values of two numbers', function () {
     assert.strictEqual(calculateNumber(1.2, 3.7), 5);
   });
 
